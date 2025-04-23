@@ -1,0 +1,184 @@
+$ duckdb dw/sales.duckdb < sql/11_tables_show_list.sql
+┌─────────────────────────┐
+│          name           │
+│         varchar         │
+├─────────────────────────┤
+│ dim_customer            │
+│ dim_date                │
+│ dim_product             │
+│ dim_product_category    │
+│ dim_product_subcategory │
+│ dim_promotion           │
+│ dim_store               │
+│ fact_sales              │
+└─────────────────────────┘
+
+
+$ duckdb dw/sales.duckdb < sql/12_tables_describe_all.sql
+
+
+┌──────────────────┬─────────────┬─────────┬─────────┬─────────┬─────────┐
+│   column_name    │ column_type │  null   │   key   │ default │  extra  │
+│     varchar      │   varchar   │ varchar │ varchar │ varchar │ varchar │
+├──────────────────┼─────────────┼─────────┼─────────┼─────────┼─────────┤
+│ SalesKey         │ BIGINT      │ YES     │ NULL    │ NULL    │ NULL    │
+│ DateKey          │ DATE        │ YES     │ NULL    │ NULL    │ NULL    │
+│ channelKey       │ BIGINT      │ YES     │ NULL    │ NULL    │ NULL    │
+│ StoreKey         │ BIGINT      │ YES     │ NULL    │ NULL    │ NULL    │
+│ ProductKey       │ BIGINT      │ YES     │ NULL    │ NULL    │ NULL    │
+│ PromotionKey     │ BIGINT      │ YES     │ NULL    │ NULL    │ NULL    │
+│ CurrencyKey      │ BIGINT      │ YES     │ NULL    │ NULL    │ NULL    │
+│ UnitCost         │ DOUBLE      │ YES     │ NULL    │ NULL    │ NULL    │
+│ UnitPrice        │ DOUBLE      │ YES     │ NULL    │ NULL    │ NULL    │
+│ SalesQuantity    │ BIGINT      │ YES     │ NULL    │ NULL    │ NULL    │
+│ ReturnQuantity   │ BIGINT      │ YES     │ NULL    │ NULL    │ NULL    │
+│ ReturnAmount     │ DOUBLE      │ YES     │ NULL    │ NULL    │ NULL    │
+│ DiscountQuantity │ BIGINT      │ YES     │ NULL    │ NULL    │ NULL    │
+│ DiscountAmount   │ DOUBLE      │ YES     │ NULL    │ NULL    │ NULL    │
+│ TotalCost        │ DOUBLE      │ YES     │ NULL    │ NULL    │ NULL    │
+│ SalesAmount      │ DOUBLE      │ YES     │ NULL    │ NULL    │ NULL    │
+├──────────────────┴─────────────┴─────────┴─────────┴─────────┴─────────┤
+│ 16 rows                                                      6 columns │
+└────────────────────────────────────────────────────────────────────────┘
+┌──────────────────────┬─────────────┬─────────┬─────────┬─────────┬─────────┐
+│     column_name      │ column_type │  null   │   key   │ default │  extra  │
+│       varchar        │   varchar   │ varchar │ varchar │ varchar │ varchar │
+├──────────────────────┼─────────────┼─────────┼─────────┼─────────┼─────────┤
+│ column00             │ BIGINT      │ YES     │ NULL    │ NULL    │ NULL    │
+│ CustomerKey          │ BIGINT      │ YES     │ NULL    │ NULL    │ NULL    │
+│ GeographyKey         │ BIGINT      │ YES     │ NULL    │ NULL    │ NULL    │
+│ FirstName            │ VARCHAR     │ YES     │ NULL    │ NULL    │ NULL    │
+│ LastName             │ VARCHAR     │ YES     │ NULL    │ NULL    │ NULL    │
+│ BirthDate            │ DATE        │ YES     │ NULL    │ NULL    │ NULL    │
+│ MaritalStatus        │ VARCHAR     │ YES     │ NULL    │ NULL    │ NULL    │
+│ Gender               │ VARCHAR     │ YES     │ NULL    │ NULL    │ NULL    │
+│ YearlyIncome         │ DOUBLE      │ YES     │ NULL    │ NULL    │ NULL    │
+│ TotalChildren        │ DOUBLE      │ YES     │ NULL    │ NULL    │ NULL    │
+│ NumberChildrenAtHome │ DOUBLE      │ YES     │ NULL    │ NULL    │ NULL    │
+│ Education            │ VARCHAR     │ YES     │ NULL    │ NULL    │ NULL    │
+│ Occupation           │ VARCHAR     │ YES     │ NULL    │ NULL    │ NULL    │
+│ HouseOwnerFlag       │ DOUBLE      │ YES     │ NULL    │ NULL    │ NULL    │
+│ NumberCarsOwned      │ DOUBLE      │ YES     │ NULL    │ NULL    │ NULL    │
+├──────────────────────┴─────────────┴─────────┴─────────┴─────────┴─────────┤
+│ 15 rows                                                          6 columns │
+└────────────────────────────────────────────────────────────────────────────┘
+┌───────────────────────┬─────────────┬─────────┬─────────┬─────────┬─────────┐
+│      column_name      │ column_type │  null   │   key   │ default │  extra  │
+│        varchar        │   varchar   │ varchar │ varchar │ varchar │ varchar │
+├───────────────────────┼─────────────┼─────────┼─────────┼─────────┼─────────┤
+│ ProductKey            │ BIGINT      │ YES     │ NULL    │ NULL    │ NULL    │
+│ ProductName           │ VARCHAR     │ YES     │ NULL    │ NULL    │ NULL    │
+│ ProductDescription    │ VARCHAR     │ YES     │ NULL    │ NULL    │ NULL    │
+│ ProductSubcategoryKey │ BIGINT      │ YES     │ NULL    │ NULL    │ NULL    │
+│ Manufacturer          │ VARCHAR     │ YES     │ NULL    │ NULL    │ NULL    │
+│ BrandName             │ VARCHAR     │ YES     │ NULL    │ NULL    │ NULL    │
+│ ClassID               │ BIGINT      │ YES     │ NULL    │ NULL    │ NULL    │
+│ ClassName             │ VARCHAR     │ YES     │ NULL    │ NULL    │ NULL    │
+│ StyleID               │ BIGINT      │ YES     │ NULL    │ NULL    │ NULL    │
+│ StyleName             │ VARCHAR     │ YES     │ NULL    │ NULL    │ NULL    │
+│ ColorID               │ BIGINT      │ YES     │ NULL    │ NULL    │ NULL    │
+│ ColorName             │ VARCHAR     │ YES     │ NULL    │ NULL    │ NULL    │
+│ Weight                │ DOUBLE      │ YES     │ NULL    │ NULL    │ NULL    │
+│ WeightUnitMeasureID   │ VARCHAR     │ YES     │ NULL    │ NULL    │ NULL    │
+│ UnitOfMeasureID       │ BIGINT      │ YES     │ NULL    │ NULL    │ NULL    │
+│ UnitOfMeasureName     │ VARCHAR     │ YES     │ NULL    │ NULL    │ NULL    │
+│ StockTypeID           │ BIGINT      │ YES     │ NULL    │ NULL    │ NULL    │
+│ StockTypeName         │ VARCHAR     │ YES     │ NULL    │ NULL    │ NULL    │
+│ UnitCost              │ DOUBLE      │ YES     │ NULL    │ NULL    │ NULL    │
+│ UnitPrice             │ DOUBLE      │ YES     │ NULL    │ NULL    │ NULL    │
+│ AvailableForSaleDate  │ DATE        │ YES     │ NULL    │ NULL    │ NULL    │
+│ Status                │ VARCHAR     │ YES     │ NULL    │ NULL    │ NULL    │
+├───────────────────────┴─────────────┴─────────┴─────────┴─────────┴─────────┤
+│ 22 rows                                                           6 columns │
+└─────────────────────────────────────────────────────────────────────────────┘
+┌─────────────────┬─────────────┬─────────┬─────────┬─────────┬─────────┐
+│   column_name   │ column_type │  null   │   key   │ default │  extra  │
+│     varchar     │   varchar   │ varchar │ varchar │ varchar │ varchar │
+├─────────────────┼─────────────┼─────────┼─────────┼─────────┼─────────┤
+│ StoreKey        │ BIGINT      │ YES     │ NULL    │ NULL    │ NULL    │
+│ GeographyKey    │ BIGINT      │ YES     │ NULL    │ NULL    │ NULL    │
+│ StoreManager    │ BIGINT      │ YES     │ NULL    │ NULL    │ NULL    │
+│ StoreType       │ VARCHAR     │ YES     │ NULL    │ NULL    │ NULL    │
+│ StoreName       │ VARCHAR     │ YES     │ NULL    │ NULL    │ NULL    │
+│ Status          │ VARCHAR     │ YES     │ NULL    │ NULL    │ NULL    │
+│ OpenDate        │ DATE        │ YES     │ NULL    │ NULL    │ NULL    │
+│ CloseDate       │ DATE        │ YES     │ NULL    │ NULL    │ NULL    │
+│ EntityKey       │ BIGINT      │ YES     │ NULL    │ NULL    │ NULL    │
+│ StorePhone      │ VARCHAR     │ YES     │ NULL    │ NULL    │ NULL    │
+│ StoreFax        │ VARCHAR     │ YES     │ NULL    │ NULL    │ NULL    │
+│ CloseReason     │ VARCHAR     │ YES     │ NULL    │ NULL    │ NULL    │
+│ EmployeeCount   │ BIGINT      │ YES     │ NULL    │ NULL    │ NULL    │
+│ SellingAreaSize │ BIGINT      │ YES     │ NULL    │ NULL    │ NULL    │
+│ LastRemodelDate │ TIMESTAMP   │ YES     │ NULL    │ NULL    │ NULL    │
+│ EmployeeKey     │ BIGINT      │ YES     │ NULL    │ NULL    │ NULL    │
+├─────────────────┴─────────────┴─────────┴─────────┴─────────┴─────────┤
+│ 16 rows                                                     6 columns │
+└───────────────────────────────────────────────────────────────────────┘
+┌─────────────────────────┬─────────────┬─────────┬─────────┬─────────┬─────────┐
+│       column_name       │ column_type │  null   │   key   │ default │  extra  │
+│         varchar         │   varchar   │ varchar │ varchar │ varchar │ varchar │
+├─────────────────────────┼─────────────┼─────────┼─────────┼─────────┼─────────┤
+│ DateKey                 │ DATE        │ YES     │ NULL    │ NULL    │ NULL    │
+│ CalendarYear            │ BIGINT      │ YES     │ NULL    │ NULL    │ NULL    │
+│ CalendarYearLabel       │ VARCHAR     │ YES     │ NULL    │ NULL    │ NULL    │
+│ CalendarHalfYearLabel   │ VARCHAR     │ YES     │ NULL    │ NULL    │ NULL    │
+│ CalendarQuarterLabel    │ VARCHAR     │ YES     │ NULL    │ NULL    │ NULL    │
+│ CalendarMonthLabel      │ VARCHAR     │ YES     │ NULL    │ NULL    │ NULL    │
+│ CalendarWeekLabel       │ VARCHAR     │ YES     │ NULL    │ NULL    │ NULL    │
+│ CalendarDayOfWeekLabel  │ VARCHAR     │ YES     │ NULL    │ NULL    │ NULL    │
+│ FiscalYear              │ BIGINT      │ YES     │ NULL    │ NULL    │ NULL    │
+│ FiscalYearLabel         │ VARCHAR     │ YES     │ NULL    │ NULL    │ NULL    │
+│ FiscalHalfYearLabel     │ VARCHAR     │ YES     │ NULL    │ NULL    │ NULL    │
+│ FiscalQuarterLabel      │ VARCHAR     │ YES     │ NULL    │ NULL    │ NULL    │
+│ FiscalMonthLabel        │ VARCHAR     │ YES     │ NULL    │ NULL    │ NULL    │
+│ IsWorkDay               │ VARCHAR     │ YES     │ NULL    │ NULL    │ NULL    │
+│ IsHoliday               │ BOOLEAN     │ YES     │ NULL    │ NULL    │ NULL    │
+│ EuropeSeason            │ VARCHAR     │ YES     │ NULL    │ NULL    │ NULL    │
+│ NorthAmericaSeason      │ VARCHAR     │ YES     │ NULL    │ NULL    │ NULL    │
+│ AsiaSeason              │ VARCHAR     │ YES     │ NULL    │ NULL    │ NULL    │
+│ MonthNumber             │ BIGINT      │ YES     │ NULL    │ NULL    │ NULL    │
+│ CalendarDayOfWeekNumber │ BIGINT      │ YES     │ NULL    │ NULL    │ NULL    │
+├─────────────────────────┴─────────────┴─────────┴─────────┴─────────┴─────────┤
+│ 20 rows                                                             6 columns │
+└───────────────────────────────────────────────────────────────────────────────┘
+┌───────────────────┬─────────────┬─────────┬─────────┬─────────┬─────────┐
+│    column_name    │ column_type │  null   │   key   │ default │  extra  │
+│      varchar      │   varchar   │ varchar │ varchar │ varchar │ varchar │
+├───────────────────┼─────────────┼─────────┼─────────┼─────────┼─────────┤
+│ PromotionKey      │ BIGINT      │ YES     │ NULL    │ NULL    │ NULL    │
+│ PromotionName     │ VARCHAR     │ YES     │ NULL    │ NULL    │ NULL    │
+│ DiscountPercent   │ DOUBLE      │ YES     │ NULL    │ NULL    │ NULL    │
+│ PromotionType     │ VARCHAR     │ YES     │ NULL    │ NULL    │ NULL    │
+│ PromotionCategory │ VARCHAR     │ YES     │ NULL    │ NULL    │ NULL    │
+└───────────────────┴─────────────┴─────────┴─────────┴─────────┴─────────┘
+┌─────────────────────┬─────────────┬─────────┬─────────┬─────────┬─────────┐
+│     column_name     │ column_type │  null   │   key   │ default │  extra  │
+│       varchar       │   varchar   │ varchar │ varchar │ varchar │ varchar │
+├─────────────────────┼─────────────┼─────────┼─────────┼─────────┼─────────┤
+│ ProductCategoryKey  │ BIGINT      │ YES     │ NULL    │ NULL    │ NULL    │
+│ ProductCategoryName │ VARCHAR     │ YES     │ NULL    │ NULL    │ NULL    │
+└─────────────────────┴─────────────┴─────────┴─────────┴─────────┴─────────┘
+┌────────────────────────┬─────────────┬─────────┬─────────┬─────────┬─────────┐
+│      column_name       │ column_type │  null   │   key   │ default │  extra  │
+│        varchar         │   varchar   │ varchar │ varchar │ varchar │ varchar │
+├────────────────────────┼─────────────┼─────────┼─────────┼─────────┼─────────┤
+│ ProductSubcategoryKey  │ BIGINT      │ YES     │ NULL    │ NULL    │ NULL    │
+│ ProductSubcategoryName │ VARCHAR     │ YES     │ NULL    │ NULL    │ NULL    │
+│ ProductCategoryKey     │ BIGINT      │ YES     │ NULL    │ NULL    │ NULL    │
+└────────────────────────┴─────────────┴─────────┴─────────┴─────────┴─────────┘
+
+
+$ duckdb dw/sales.duckdb < sql/13_tables_row_counts.sql
+┌─────────────────────────┬───────────┐
+│       table_name        │ row_count │
+│         varchar         │   int64   │
+├─────────────────────────┼───────────┤
+│ fact_sales              │   3406089 │
+│ dim_customer            │     18869 │
+│ dim_product             │      2233 │
+│ dim_store               │       306 │
+│ dim_date                │      2556 │
+│ dim_promotion           │        28 │
+│ dim_product_category    │         8 │
+│ dim_product_subcategory │        44 │
+└─────────────────────────┴───────────┘
